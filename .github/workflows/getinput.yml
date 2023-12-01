@@ -3,6 +3,9 @@ name: run main.py
 on:
   schedule:
     - cron: '0 5 * * *' # At 05:00 UTC every day
+  push:
+    branches:
+      - main
 
 jobs:
   get-inputsd:
@@ -16,8 +19,12 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.12' # install the python version needed
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
 
-      - name: fetch amir's input 
+      - name: fetch duncan's input 
         env:
           AMIR_COOKIE: ${{ secrets.DUNCAN_COOKIE }}
         run: python Duncan/getinputduncan.py
@@ -46,6 +53,11 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.12' # install the python version needed
+
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
 
       - name: fetch amir's input 
         env:
