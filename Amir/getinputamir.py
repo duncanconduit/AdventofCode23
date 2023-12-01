@@ -12,7 +12,7 @@ day_today = date.today().strftime("%d").lstrip("0")
 try:
     sessionCookie = os.environ["AMIR_COOKIE"]
 except KeyError:
-    print("Please set the environment variable DUNCAN_COOKIE")
+    print("Please set the environment variable AMIR_COOKIE")
     sys.exit(1)
 
 cookies = {'session': sessionCookie}
@@ -28,9 +28,9 @@ else:
 
 print(f"Initializing day {day}")
 
-if not os.path.exists(f"Duncan/day{day}"):
-    os.mkdir(f"Duncan/day{day}")
-    os.chdir(f"Duncan/day{day}")
+if not os.path.exists(f"Amir/day{day}"):
+    os.mkdir(f"Amir/day{day}")
+    os.chdir(f"Amir/day{day}")
     r = requests.get(f"https://adventofcode.com/2023/day/{day}/input", cookies = cookies)
     with open(f"input{day}.txt","w") as f:
         f.write(r.text)

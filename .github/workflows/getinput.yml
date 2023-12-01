@@ -26,7 +26,7 @@ jobs:
 
       - name: fetch duncan's input 
         env:
-          AMIR_COOKIE: ${{ secrets.DUNCAN_COOKIE }}
+          DUNCAN_COOKIE: ${{ secrets.DUNCAN_COOKIE }}
         run: python Duncan/getinputduncan.py
 
       - name: commit files
